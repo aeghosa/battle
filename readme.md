@@ -18,6 +18,55 @@
 
  # rspec
 
- >We use `rspec --init` to create a `spec/spec_helper.rb` and `.rspec` file. This gives us a skeletal rspec setup. (rspec is testing tool written in the programming language Ruby to test Ruby code. It is a behavior-driven development framework which is extensively used in production applications)
+ > We use `rspec --init` to create a `spec/spec_helper.rb` and `.rspec` file. This gives us a skeletal rspec setup. (rspec is testing tool written in the programming language Ruby to test Ruby code. It is a behavior-driven development framework which is extensively used in production applications)
 
 We run our tests with rspec and see 0 examples, 0 failures.
+
+# Setting up test infrastructure
+
+> We set up our spec_helper.rb with the things it needs to prepare Capybara and to get Capybara to test our app.(Capybara is a web-based test automation software that simulates scenarios for user stories and automates web application testing for behavior-driven software development.)
+
+# Features Directory
+
+> Inside our spec directory, let's create a features directory. This will house our feature tests, which will be written using Capybara. A separate directory will separate feature tests from unit tests, which will be written in raw RSpec.
+
+`unit tests` > The unit test ensures that individual code i.e. small piece of code works fine. - Unit Test is done whenever a new class is written, any bug is fixed, or any functionality is changed.
+`Integration Test` > An integration test is done to ensure that - when one or more units are integrated, it works fine. - The integration test is done when any new unit is integrated with the system or if the already existing unit case is updated.
+`Feature Tests` > The feature test is the testing of features just like an actual user. Like how the actual user will use the feature. - Feature test is an end to end testing and is done when a new feature is added to the software or any existing feature is modified. 
+
+> within the feature directory, we create feature tests to test how the actual user will use the feature.
+
+e.g feature test
+
+feature `Testing infrastructure` do
+  scenario `Can run app and check page content` do
+    visit(`/`)
+    expect(page).to have_content `Testing infrastructure working!`
+  end
+end
+
+We run `rspec`.
+If RSpec and our `spec_helper.rb` are set up correctly, RSpec outputs 1 example, 1 failure.
+
+We now update our app so that the homepage displays `Testing infrastructure working!`:
+
+We run rspec. RSpec outputs 1 example, 0 failures.
+
+# Writing Feature Tests Indepth
+
+To write our feature test, we need to think about the exact actions a user would take
+
+Almost every Capybara feature test involves this process:
+
+`What does the user have to do?`
+`What does the user expect to see?`
+
+* Note that we are using Capybara's `feature` and `scenario` syntax. These work just like `describe` and `it`, and we can use them interchangeably. This is because Capybara-RSpec is simply a bunch of helpful methods on top of RSpec. Capybara itself is simply a way of driving devices, like browsers, in a programmatic way.
+
+# rendering an index.erb route
+
+ERB (Embedded RuBy) is a feature of Ruby that enables you to conveniently generate any kind of text, in any quantity, from templates. The templates themselves combine plain text with Ruby code for variable substitution and flow control, which makes them easy to write and maintain.
+
+# special gemfile `launchy`
+
+Launchy is here to make a common approach to launching external application from within ruby programs. However you need in your feature test: use Capybara's helper `save_and_open_page.`
