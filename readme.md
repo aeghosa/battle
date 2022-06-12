@@ -74,3 +74,10 @@ Launchy is here to make a common approach to launching external application from
 # using sessions
 
 A session is a short-term information store that lives on the server. It's very small, but it allows the server to store basic pieces of information, like the name of the current user, across multiple requests. In Sinatra, session is a Hash, and you can set values for its keys. session is most often used to store details of a logged in user.
+
+# Test Helpers
+
+We can use a helper to avoid this constant repetition. Helpers are small objects that provide basic functionality that isn't related to the main aim of a program. They are almost always used to DRY up code.
+
+> make a new file, web_helpers.rb. We can use this file to store actions we commonly use in our feature tests.
+> require this file in our spec_helper.rb (because then we can access methods defined in web_helpers.rb in any of our tests):
