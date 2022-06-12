@@ -70,3 +70,7 @@ ERB (Embedded RuBy) is a feature of Ruby that enables you to conveniently genera
 # special gemfile `launchy`
 
 Launchy is here to make a common approach to launching external application from within ruby programs. However you need in your feature test: use Capybara's helper `save_and_open_page.`
+
+# using sessions
+
+A session is a short-term information store that lives on the server. It's very small, but it allows the server to store basic pieces of information, like the name of the current user, across multiple requests. In Sinatra, session is a Hash, and you can set values for its keys. session is most often used to store details of a logged in user.
