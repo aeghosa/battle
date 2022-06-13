@@ -81,3 +81,19 @@ We can use a helper to avoid this constant repetition. Helpers are small objects
 
 > make a new file, web_helpers.rb. We can use this file to store actions we commonly use in our feature tests.
 > require this file in our spec_helper.rb (because then we can access methods defined in web_helpers.rb in any of our tests):
+
+# Appplication logic stored in Model Layer `Separation of Concerns`
+
+> when user Story is more complex than previous ones hence we should refactor our code to use some Application logic stored in a Model layer. We can store our Model layer in `/lib` and access it from our controller. This is known as a Separation of Concerns.
+
+    |  Incoming
+    V  request
+_____________________
+|     Controller    |
+---------------------
+|       Model       |
+_____________________
+
+Our Controller (for now, anything in `app.rb`) will receive the incoming request and call the appropriate action (for example, post `/names`.
+
+If the Controller action is complex - for example, it stores complex data (i.e. more than simple strings) or creates new objects - it should pass that sort of job over to the Model (for now, anything in `/lib`). Our Model will be the kind of Object-Oriented program you have been building so far. You could imagine that the Controller provides web access to your Ruby code from a browser.

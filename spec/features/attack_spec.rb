@@ -2,7 +2,7 @@ feature 'Attacking' do
   scenario 'attack Player 2' do
     sign_in_and_play
     click_link 'Attack'
-    save_and_open_page # will save the web page and open the browser to display it
+    # save_and_open_page # will save the web page and open the browser to display it
     expect(page).to have_content 'Charlotte attacked Mittens'
   end
 end
